@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "D:\KimiData\kimi\tasks\2026-10-08\20-14-45-56fe26c6\hardhat-detection\scripts\download_hardhat.py", line 101, in <module>
+    main()
+    ~~~~^^
+  File "D:\KimiData\kimi\tasks\2026-10-08\20-14-45-56fe26c6\hardhat-detection\scripts\download_hardhat.py", line 54, in main
+    final_url, total = resolve(URL)
+                       ~~~~~~~^^^^^
+  File "D:\KimiData\kimi\tasks\2026-10-08\20-14-45-56fe26c6\hardhat-detection\scripts\download_hardhat.py", line 26, in resolve
+    with urllib.request.urlopen(req, timeout=30) as r:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\什亭之匣\.conda\envs\torch314\Lib\urllib\request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\什亭之匣\.conda\envs\torch314\Lib\urllib\request.py", line 493, in open
+    response = meth(req, response)
+  File "C:\Users\什亭之匣\.conda\envs\torch314\Lib\urllib\request.py", line 602, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "C:\Users\什亭之匣\.conda\envs\torch314\Lib\urllib\request.py", line 531, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\什亭之匣\.conda\envs\torch314\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Users\什亭之匣\.conda\envs\torch314\Lib\urllib\request.py", line 611, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+[21:04:41] resolved: https://storage.googleapis.com:443/kaggle-data-sets/825603/1411367/bundle/archiv... total=1314.2 MB
+[21:04:41] part 8 done (1 bytes)
+[21:04:56] progress 68.9/1314.2 MB (5.2%) speed=4.60 MB/s elapsed=15s
+[21:05:11] progress 99.4/1314.2 MB (7.6%) speed=2.03 MB/s elapsed=30s
+[21:05:26] progress 132.9/1314.2 MB (10.1%) speed=2.24 MB/s elapsed=45s
+[21:05:41] progress 163.8/1314.2 MB (12.5%) speed=2.06 MB/s elapsed=60s
+[21:05:56] progress 186.9/1314.2 MB (14.2%) speed=1.54 MB/s elapsed=75s
+[21:06:11] progress 207.6/1314.2 MB (15.8%) speed=1.38 MB/s elapsed=90s
+[21:06:26] progress 226.0/1314.2 MB (17.2%) speed=1.22 MB/s elapsed=105s
+[21:06:41] progress 246.9/1314.2 MB (18.8%) speed=1.40 MB/s elapsed=120s
+[21:06:56] progress 264.2/1314.2 MB (20.1%) speed=1.15 MB/s elapsed=135s
+[21:07:11] progress 289.9/1314.2 MB (22.1%) speed=1.71 MB/s elapsed=150s
+[21:07:26] progress 322.7/1314.2 MB (24.6%) speed=2.18 MB/s elapsed=165s
+[21:07:41] progress 357.6/1314.2 MB (27.2%) speed=2.32 MB/s elapsed=180s
+[21:07:56] progress 387.7/1314.2 MB (29.5%) speed=2.01 MB/s elapsed=195s
+[21:08:11] progress 413.4/1314.2 MB (31.5%) speed=1.71 MB/s elapsed=210s
+[21:08:26] progress 438.8/1314.2 MB (33.4%) speed=1.70 MB/s elapsed=225s
+[21:08:41] progress 467.4/1314.2 MB (35.6%) speed=1.90 MB/s elapsed=240s
+[21:08:56] progress 498.6/1314.2 MB (37.9%) speed=2.08 MB/s elapsed=255s
+[21:09:11] progress 524.3/1314.2 MB (39.9%) speed=1.71 MB/s elapsed=270s
+[21:09:26] progress 552.3/1314.2 MB (42.0%) speed=1.87 MB/s elapsed=285s
+[21:09:41] progress 578.3/1314.2 MB (44.0%) speed=1.73 MB/s elapsed=300s
+[21:09:56] progress 606.3/1314.2 MB (46.1%) speed=1.87 MB/s elapsed=315s
+1314.2 MB (44.0%) speed=1.73 MB/s elapsed=300s
+[21:09:56] progress 606.3/1314.2 MB (46.1%) speed=1.87 MB/s elapsed=315s

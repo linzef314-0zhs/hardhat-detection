@@ -1,0 +1,22 @@
+# 冒烟测试：200 张 × 10 epoch，验证全链路
+name: smoke
+model: yolov8n.pt
+data: data/yolo/data.yaml
+epochs: 10
+imgsz: 640
+batch: 8
+workers: 4
+patience: 5
+seed: 42
+optimizer: auto
+lr0: 0.01
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 2
+weight_decay: 0.0005
+mosaic: 1.0
+mixup: 0.0
+close_mosaic: 2
+amp: true
+plots: true
+max_train_images: 200

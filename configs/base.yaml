@@ -1,0 +1,21 @@
+# 基线配置：YOLOv8n 标准配方
+name: base
+model: yolov8n.pt
+data: data/yolo/data.yaml
+epochs: 50
+imgsz: 640
+batch: 8
+workers: 8
+patience: 10
+seed: 42
+optimizer: auto
+lr0: 0.01
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 3
+weight_decay: 0.0005
+mosaic: 1.0
+mixup: 0.0
+close_mosaic: 10
+amp: true
+plots: true

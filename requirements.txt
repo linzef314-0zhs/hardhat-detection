@@ -1,0 +1,11 @@
+torch==2.14.0+cu130
+ultralytics==8.4.155
+matplotlib==3.11.2
+pandas==3.0.6
+numpy==2.5.3
+opencv-python==5.0.0
+pillow==12.3.0
+pyyaml==6.0.3
+tqdm==4.70.1
+onnx==1.23.2
+onnxruntime==1.30.0
