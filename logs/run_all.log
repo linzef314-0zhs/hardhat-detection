@@ -1,0 +1,20 @@
+[22:13:26] === 开始训练 configs/base.yaml ===
+[22:13:26] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/base.yaml
+[23:12:42] === 完成 configs/base.yaml，耗时 59.3 min ===
+[23:12:42] === 分析 runs/detect/base ===
+[23:12:42] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/analyze.py --run runs/detect/base
+[23:14:00] === 生成 bad case 叠加图 ===
+[23:14:00] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/gen_badcases.py --run runs/detect/base
+[23:14:08] === 开始训练 configs/ablation_no_mosaic.yaml ===
+[23:14:08] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/ablation_no_mosaic.yaml
+[00:09:46] === 完成 configs/ablation_no_mosaic.yaml，耗时 55.6 min ===
+[00:09:46] === 分析 runs/detect/ablation_no_mosaic ===
+[00:09:46] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/analyze.py --run runs/detect/ablation_no_mosaic
+[00:11:01] === 开始训练 configs/ablation_lr5e3.yaml ===
+[00:11:01] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/ablation_lr5e3.yaml
+[01:09:19] === 完成 configs/ablation_lr5e3.yaml，耗时 58.3 min ===
+[01:09:19] === 分析 runs/detect/ablation_lr5e3 ===
+[01:09:19] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/analyze.py --run runs/detect/ablation_lr5e3
+[01:10:41] ALL DONE — 全部实验与分析完成
+s\torch314\python.exe scripts/analyze.py --run runs/detect/ablation_lr5e3
+[01:10:41] ALL DONE — 全部实验与分析完成
