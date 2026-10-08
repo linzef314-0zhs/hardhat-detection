@@ -86,8 +86,13 @@ def main():
         log(f"progress {cur/1e6:.1f}/{total/1e6:.1f} MB ({100*cur/total:.1f}%) speed={speed:.2f} MB/s elapsed={time.time()-t0:.0f}s")
     for t in threads:
         t.join()
-    if progress[0] < total:
-        raise RuntimeError("incomplete download")
+    # 校验按分块实际大小（兼容断点续传，progress 只计数本次新增字节）
+    for i, (s, e) in enumerate(boundaries):
+        part = f"{OUT}.part{i}"
+        want = e - s + 1
+        got = os.path.getsize(part) if os.path.exists(part) else 0
+        if got != want:
+            raise RuntimeError(f"part {i} incomplete: {got}/{want}")
     with open(OUT, "wb") as out:
         for i in range(len(boundaries)):
             part = f"{OUT}.part{i}"

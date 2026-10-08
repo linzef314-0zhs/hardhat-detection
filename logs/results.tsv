@@ -1,0 +1,2 @@
+time	name	config	epochs_run	batch	imgsz	lr0	mosaic	weight_decay	best_epoch	mAP50	mAP50_95	best_pt	note
+2026-10-08 22:06:59	smoke	configs\smoke.yaml	10	8	640	0.01	1.0	0.0005	10	0.5186	0.3009	D:\KimiData\kimi\tasks\2026-10-08\20-14-45-56fe26c6\hardhat-detection\runs\detect\runs\detect\smoke\weights\best.pt	

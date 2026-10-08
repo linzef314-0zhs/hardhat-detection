@@ -5,7 +5,7 @@ data: data/yolo/data.yaml
 epochs: 10
 imgsz: 640
 batch: 8
-workers: 4
+workers: 0
 patience: 5
 seed: 42
 optimizer: auto

@@ -46,7 +46,8 @@ def run_once(cfg, batch):
         mosaic=cfg.get("mosaic", 1.0), mixup=cfg.get("mixup", 0.0),
         close_mosaic=cfg.get("close_mosaic", 10),
         amp=cfg.get("amp", True), plots=True,
-        project="runs/detect", name=cfg["name"], exist_ok=True,
+        project=str((Path.cwd() / "runs" / "detect").resolve()),
+        name=cfg["name"], exist_ok=True,
     )
     # 冒烟测试：限制训练图片数
     max_imgs = cfg.get("max_train_images")
@@ -60,7 +61,10 @@ def run_once(cfg, batch):
         lst = Path("logs") / f"subset_{cfg['name']}.txt"
         lst.write_text("\n".join(str(p.resolve()) for p in imgs), encoding="utf-8")
         data_cfg["train"] = str(lst.resolve())
-        kw["data"] = data_cfg
+        sub_yaml = Path("logs") / f"subset_{cfg['name']}_data.yaml"
+        with open(sub_yaml, "w", encoding="utf-8") as f:
+            yaml.safe_dump(data_cfg, f, allow_unicode=True)
+        kw["data"] = str(sub_yaml.resolve())
     return model.train(**kw)
 
 

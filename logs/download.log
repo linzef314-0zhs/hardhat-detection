@@ -164,6 +164,50 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 [21:35:04] progress 22.0/1314.2 MB (1.7%) speed=0.19 MB/s elapsed=90s
 [21:35:19] progress 24.9/1314.2 MB (1.9%) speed=0.19 MB/s elapsed=105s
 [21:35:34] progress 28.8/1314.2 MB (2.2%) speed=0.26 MB/s elapsed=120s
-speed=0.21 MB/s elapsed=75s
-[21:35:04] progress 22.0/1314.2 MB (1.7%) speed=0.19 MB/s elapsed=90s
-[21:35:19] progress 24.9/1314.2 MB (1.9%) speed=0.19 MB/s elapsed=105s
+[21:35:49] progress 33.8/1314.2 MB (2.6%) speed=0.33 MB/s elapsed=135s
+[21:36:04] progress 38.3/1314.2 MB (2.9%) speed=0.30 MB/s elapsed=150s
+[21:36:19] progress 43.0/1314.2 MB (3.3%) speed=0.31 MB/s elapsed=165s
+[21:36:34] progress 48.8/1314.2 MB (3.7%) speed=0.38 MB/s elapsed=180s
+[21:36:49] progress 54.3/1314.2 MB (4.1%) speed=0.37 MB/s elapsed=195s
+[21:37:04] progress 61.1/1314.2 MB (4.6%) speed=0.45 MB/s elapsed=210s
+[21:37:19] progress 66.1/1314.2 MB (5.0%) speed=0.33 MB/s elapsed=225s
+[21:37:34] progress 72.4/1314.2 MB (5.5%) speed=0.42 MB/s elapsed=240s
+[21:37:49] progress 78.4/1314.2 MB (6.0%) speed=0.40 MB/s elapsed=255s
+[21:38:04] progress 84.9/1314.2 MB (6.5%) speed=0.44 MB/s elapsed=270s
+[21:38:19] progress 89.1/1314.2 MB (6.8%) speed=0.28 MB/s elapsed=285s
+[21:38:34] progress 93.3/1314.2 MB (7.1%) speed=0.28 MB/s elapsed=300s
+[21:38:49] progress 97.5/1314.2 MB (7.4%) speed=0.28 MB/s elapsed=315s
+[21:39:04] progress 101.4/1314.2 MB (7.7%) speed=0.26 MB/s elapsed=330s
+[21:39:19] progress 105.6/1314.2 MB (8.0%) speed=0.28 MB/s elapsed=345s
+[21:39:28] part 0 done (164280173 bytes)
+[21:39:34] progress 111.1/1314.2 MB (8.5%) speed=0.36 MB/s elapsed=360s
+[21:39:49] progress 113.2/1314.2 MB (8.6%) speed=0.14 MB/s elapsed=375s
+[21:40:04] progress 116.3/1314.2 MB (8.8%) speed=0.21 MB/s elapsed=390s
+[21:40:19] progress 119.5/1314.2 MB (9.1%) speed=0.21 MB/s elapsed=405s
+[21:40:34] progress 121.0/1314.2 MB (9.2%) speed=0.10 MB/s elapsed=420s
+[21:40:49] progress 123.9/1314.2 MB (9.4%) speed=0.19 MB/s elapsed=435s
+[21:41:04] progress 126.3/1314.2 MB (9.6%) speed=0.16 MB/s elapsed=450s
+[21:41:19] progress 128.1/1314.2 MB (9.7%) speed=0.12 MB/s elapsed=465s
+[21:41:34] progress 130.2/1314.2 MB (9.9%) speed=0.14 MB/s elapsed=480s
+[21:41:49] progress 133.6/1314.2 MB (10.2%) speed=0.23 MB/s elapsed=495s
+[21:42:04] progress 136.0/1314.2 MB (10.3%) speed=0.16 MB/s elapsed=510s
+[21:42:19] progress 137.8/1314.2 MB (10.5%) speed=0.12 MB/s elapsed=525s
+[21:42:32] part 3 done (164280173 bytes)
+[21:42:34] progress 139.3/1314.2 MB (10.6%) speed=0.10 MB/s elapsed=540s
+Traceback (most recent call last):
+  File "D:\KimiData\kimi\tasks\2026-10-08\20-14-45-56fe26c6\hardhat-detection\scripts\download_hardhat.py", line 105, in <module>
+    main()
+    ~~~~^^
+  File "D:\KimiData\kimi\tasks\2026-10-08\20-14-45-56fe26c6\hardhat-detection\scripts\download_hardhat.py", line 90, in main
+    raise RuntimeError("incomplete download")
+RuntimeError: incomplete download
+[21:45:54] resolved: https://storage.googleapis.com:443/kaggle-data-sets/825603/1411367/bundle/archiv... total=1314.2 MB
+[21:45:54] part 0 done (164280173 bytes)
+[21:45:54] part 2 done (164280173 bytes)
+[21:45:54] part 1 done (164280173 bytes)
+[21:45:54] part 3 done (164280173 bytes)
+[21:45:54] part 4 done (164280173 bytes)
+[21:45:54] part 6 done (164280173 bytes)
+[21:45:54] part 5 done (164280173 [21:45:54] part 7 done (164280173 bytes)
+[21:46:09] progress 0.0/1314.2 MB (0.0%) speed=0.00 MB/s elapsed=15s
+[21:46:10] DONE: data/raw/hardhat_full.zip (1314.2 MB)
