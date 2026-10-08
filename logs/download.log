@@ -47,5 +47,123 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 [21:09:26] progress 552.3/1314.2 MB (42.0%) speed=1.87 MB/s elapsed=285s
 [21:09:41] progress 578.3/1314.2 MB (44.0%) speed=1.73 MB/s elapsed=300s
 [21:09:56] progress 606.3/1314.2 MB (46.1%) speed=1.87 MB/s elapsed=315s
-1314.2 MB (44.0%) speed=1.73 MB/s elapsed=300s
-[21:09:56] progress 606.3/1314.2 MB (46.1%) speed=1.87 MB/s elapsed=315s
+[21:10:11] progress 628.4/1314.2 MB (47.8%) speed=1.47 MB/s elapsed=330s
+[21:10:26] progress 649.6/1314.2 MB (49.4%) speed=1.42 MB/s elapsed=345s
+[21:10:41] progress 680.3/1314.2 MB (51.8%) speed=2.04 MB/s elapsed=360s
+[21:10:56] progress 703.9/1314.2 MB (53.6%) speed=1.57 MB/s elapsed=375s
+[21:11:11] progress 729.3/1314.2 MB (55.5%) speed=1.70 MB/s elapsed=390s
+[21:11:26] progress 753.1/1314.2 MB (57.3%) speed=1.59 MB/s elapsed=405s
+[21:11:41] progress 780.7/1314.2 MB (59.4%) speed=1.84 MB/s elapsed=420s
+[21:11:51] part 7 done (164280173 bytes)
+[21:11:56] progress 808.4/1314.2 MB (61.5%) speed=1.85 MB/s elapsed=435s
+[21:12:11] progress 831.4/1314.2 MB (63.3%) speed=1.54 MB/s elapsed=450s
+[21:12:26] progress 858.2/1314.2 MB (65.3%) speed=1.78 MB/s elapsed=465s
+[21:12:41] progress 880.7/1314.2 MB (67.0%) speed=1.50 MB/s elapsed=480s
+[21:12:56] progress 905.1/1314.2 MB (68.9%) speed=1.63 MB/s elapsed=495s
+[21:13:11] progress 928.7/1314.2 MB (70.7%) speed=1.57 MB/s elapsed=510s
+[21:13:26] progress 947.0/1314.2 MB (72.1%) speed=1.22 MB/s elapsed=525s
+[21:13:27] part 5 done (164280173 bytes)
+[21:13:41] progress 960.9/1314.2 MB (73.1%) speed=0.92 MB/s elapsed=540s
+[21:13:56] progress 976.3/1314.2 MB (74.3%) speed=1.03 MB/s elapsed=555s
+[21:14:04] part 2 done (164280173 bytes)
+[21:14:11] progress 988.3/1314.2 MB (75.2%) speed=0.80 MB/s elapsed=570s
+[21:14:26] progress 999.0/1314.2 MB (76.0%) speed=0.72 MB/s elapsed=585s
+[21:14:41] progress 1008.0/1314.2 MB (76.7%) speed=0.59 MB/s elapsed=600s
+[21:14:55] part 4 done (164280173 bytes)
+[21:14:56] progress 1018.9/1314.2 MB (77.5%) speed=0.73 MB/s elapsed=615s
+[21:15:11] progress 1026.2/1314.2 MB (78.1%) speed=0.49 MB/s elapsed=630s
+[21:15:26] progress 1037.5/1314.2 MB (78.9%) speed=0.75 MB/s elapsed=645s
+[21:15:41] progress 1046.9/1314.2 MB (79.7%) speed=0.63 MB/s elapsed=660s
+[21:15:49] part 1 done (164280173 bytes)
+[21:15:56] progress 1053.9/1314.2 MB (80.2%) speed=0.47 MB/s elapsed=675s
+[21:16:11] progress 1058.6/1314.2 MB (80.6%) speed=0.31 MB/s elapsed=690s
+[21:16:26] progress 1063.1/1314.2 MB (80.9%) speed=0.30 MB/s elapsed=705s
+[21:16:41] progress 1068.9/1314.2 MB (81.3%) speed=0.38 MB/s elapsed=720s
+[21:16:56] progress 1074.4/1314.2 MB (81.7%) speed=0.37 MB/s elapsed=735s
+[21:16:58] part 6 done (164280173 bytes)
+[21:17:11] progress 1077.2/1314.2 MB (82.0%) speed=0.19 MB/s elapsed=750s
+[21:17:26] progress 1078.7/1314.2 MB (82.1%) speed=0.10 MB/s elapsed=765s
+[21:17:41] progress 1080.3/1314.2 MB (82.2%) speed=0.10 MB/s elapsed=780s
+[21:17:56] progress 1081.6/1314.2 MB (82.3%) speed=0.09 MB/s elapsed=795s
+[21:18:11] progress 1082.9/1314.2 MB (82.4%) speed=0.09 MB/s elapsed=810s
+[21:18:26] progress 1084.0/1314.2 MB (82.5%) speed=0.07 MB/s elapsed=825s
+[21:18:41] progress 1085.3/1314.2 MB (82.6%) speed=0.09 MB/s elapsed=840s
+[21:18:56] progress 1088.2/1314.2 MB (82.8%) speed=0.19 MB/s elapsed=855s
+[21:19:11] progress 1090.8/1314.2 MB (83.0%) speed=0.17 MB/s elapsed=870s
+[21:19:26] progress 1093.2/1314.2 MB (83.2%) speed=0.16 MB/s elapsed=885s
+[21:19:41] progress 1094.7/1314.2 MB (83.3%) speed=0.10 MB/s elapsed=900s
+[21:19:56] progress 1096.0/1314.2 MB (83.4%) speed=0.09 MB/s elapsed=915s
+[21:20:11] progress 1097.4/1314.2 MB (83.5%) speed=0.09 MB/s elapsed=930s
+[21:20:26] progress 1098.7/1314.2 MB (83.6%) speed=0.09 MB/s elapsed=945s
+[21:20:41] progress 1100.0/1314.2 MB (83.7%) speed=0.09 MB/s elapsed=960s
+[21:20:56] progress 1101.8/1314.2 MB (83.8%) speed=0.12 MB/s elapsed=975s
+[21:21:11] progress 1103.6/1314.2 MB (84.0%) speed=0.12 MB/s elapsed=990s
+[21:21:26] progress 1105.0/1314.2 MB (84.1%) speed=0.09 MB/s elapsed=1005s
+[21:21:41] progress 1106.5/1314.2 MB (84.2%) speed=0.10 MB/s elapsed=1020s
+[21:21:56] progress 1108.1/1314.2 MB (84.3%) speed=0.10 MB/s elapsed=1035s
+[21:22:11] progress 1109.7/1314.2 MB (84.4%) speed=0.10 MB/s elapsed=1050s
+[21:22:26] progress 1111.5/1314.2 MB (84.6%) speed=0.12 MB/s elapsed=1065s
+[21:22:41] progress 1112.8/1314.2 MB (84.7%) speed=0.09 MB/s elapsed=1080s
+[21:22:56] progress 1114.4/1314.2 MB (84.8%) speed=0.10 MB/s elapsed=1095s
+[21:23:11] progress 1116.2/1314.2 MB (84.9%) speed=0.12 MB/s elapsed=1110s
+[21:23:26] progress 1118.1/1314.2 MB (85.1%) speed=0.12 MB/s elapsed=1125s
+[21:23:41] progress 1120.4/1314.2 MB (85.3%) speed=0.16 MB/s elapsed=1140s
+[21:23:56] progress 1121.7/1314.2 MB (85.4%) speed=0.09 MB/s elapsed=1155s
+[21:24:11] progress 1123.6/1314.2 MB (85.5%) speed=0.12 MB/s elapsed=1170s
+[21:24:26] progress 1124.9/1314.2 MB (85.6%) speed=0.09 MB/s elapsed=1185s
+[21:24:41] progress 1126.2/1314.2 MB (85.7%) speed=0.09 MB/s elapsed=1200s
+[21:24:56] progress 1128.0/1314.2 MB (85.8%) speed=0.12 MB/s elapsed=1215s
+[21:25:11] progress 1129.6/1314.2 MB (86.0%) speed=0.10 MB/s elapsed=1230s
+[21:25:26] progress 1130.6/1314.2 MB (86.0%) speed=0.07 MB/s elapsed=1245s
+[21:25:41] progress 1131.7/1314.2 MB (86.1%) speed=0.07 MB/s elapsed=1260s
+[21:25:56] progress 1132.7/1314.2 MB (86.2%) speed=0.07 MB/s elapsed=1275s
+[21:26:11] progress 1133.8/1314.2 MB (86.3%) speed=0.07 MB/s elapsed=1290s
+[21:26:26] progress 1135.1/1314.2 MB (86.4%) speed=0.09 MB/s elapsed=1305s
+[21:26:41] progress 1136.7/1314.2 MB (86.5%) speed=0.10 MB/s elapsed=1320s
+[21:26:56] progress 1138.8/1314.2 MB (86.6%) speed=0.14 MB/s elapsed=1335s
+[21:27:11] progress 1141.4/1314.2 MB (86.8%) speed=0.17 MB/s elapsed=1350s
+[21:27:26] progress 1143.8/1314.2 MB (87.0%) speed=0.16 MB/s elapsed=1365s
+[21:27:41] progress 1146.1/1314.2 MB (87.2%) speed=0.16 MB/s elapsed=1380s
+[21:27:56] progress 1147.9/1314.2 MB (87.3%) speed=0.12 MB/s elapsed=1395s
+[21:28:11] progress 1150.6/1314.2 MB (87.5%) speed=0.17 MB/s elapsed=1410s
+[21:28:26] progress 1152.1/1314.2 MB (87.7%) speed=0.10 MB/s elapsed=1425s
+[21:28:41] progress 1153.5/1314.2 MB (87.8%) speed=0.09 MB/s elapsed=1440s
+[21:28:56] progress 1155.0/1314.2 MB (87.9%) speed=0.10 MB/s elapsed=1455s
+[21:29:11] progress 1156.6/1314.2 MB (88.0%) speed=0.10 MB/s elapsed=1470s
+[21:29:26] progress 1158.4/1314.2 MB (88.1%) speed=0.12 MB/s elapsed=1485s
+[21:29:41] progress 1160.0/1314.2 MB (88.3%) speed=0.10 MB/s elapsed=1500s
+[21:29:56] progress 1161.1/1314.2 MB (88.3%) speed=0.07 MB/s elapsed=1515s
+[21:30:11] progress 1162.1/1314.2 MB (88.4%) speed=0.07 MB/s elapsed=1530s
+[21:30:26] progress 1163.4/1314.2 MB (88.5%) speed=0.09 MB/s elapsed=1545s
+[21:30:41] progress 1165.0/1314.2 MB (88.6%) speed=0.10 MB/s elapsed=1560s
+[21:30:56] progress 1166.6/1314.2 MB (88.8%) speed=0.10 MB/s elapsed=1575s
+[21:31:11] progress 1167.6/1314.2 MB (88.8%) speed=0.07 MB/s elapsed=1590s
+[21:31:26] progress 1168.9/1314.2 MB (88.9%) speed=0.09 MB/s elapsed=1605s
+[21:31:41] progress 1169.7/1314.2 MB (89.0%) speed=0.05 MB/s elapsed=1620s
+[21:31:56] progress 1170.5/1314.2 MB (89.1%) speed=0.05 MB/s elapsed=1635s
+[21:32:11] progress 1171.5/1314.2 MB (89.1%) speed=0.07 MB/s elapsed=1650s
+[21:32:26] progress 1172.1/1314.2 MB (89.2%) speed=0.03 MB/s elapsed=1665s
+[21:32:41] progress 1173.1/1314.2 MB (89.3%) speed=0.07 MB/s elapsed=1680s
+[21:32:56] progress 1173.6/1314.2 MB (89.3%) speed=0.03 MB/s elapsed=1695s
+[21:33:11] progress 1174.4/1314.2 MB (89.4%) speed=0.05 MB/s elapsed=1710s
+[21:33:26] progress 1174.9/1314.2 MB (89.4%) speed=0.03 MB/s elapsed=1725s
+4.2 MB (89.4%) speed=0.05 MB/s elapsed=1710s
+[21:33:26] progress 1174.9/1314.2 MB (89.4%) speed=0.03 MB/s elapsed=1725s
+[21:33:34] resolved: https://storage.googleapis.com:443/kaggle-data-sets/825603/1411367/bundle/archiv... total=1314.2 MB
+[21:33:34] part 1 done (164280173 bytes)
+[21:33:34] part 5 done (164280173 bytes)
+[21:33:34] part 2 done (164280173 byte[21:[21:33:34] part 6 done (164280173 bytes)
+[21:33:34] part 4 done (164280173 bytes)
+[21:33:34] part 8 done (1 bytes)
+[21:33:34] part 7 done (164280173 bytes)
+[21:33:49] progress 6.0/1314.2 MB (0.5%) speed=0.40 MB/s elapsed=15s
+[21:34:04] progress 9.2/1314.2 MB (0.7%) speed=0.21 MB/s elapsed=30s
+[21:34:19] progress 12.8/1314.2 MB (1.0%) speed=0.24 MB/s elapsed=45s
+[21:34:34] progress 16.0/1314.2 MB (1.2%) speed=0.21 MB/s elapsed=60s
+[21:34:49] progress 19.1/1314.2 MB (1.5%) speed=0.21 MB/s elapsed=75s
+[21:35:04] progress 22.0/1314.2 MB (1.7%) speed=0.19 MB/s elapsed=90s
+[21:35:19] progress 24.9/1314.2 MB (1.9%) speed=0.19 MB/s elapsed=105s
+[21:35:34] progress 28.8/1314.2 MB (2.2%) speed=0.26 MB/s elapsed=120s
+speed=0.21 MB/s elapsed=75s
+[21:35:04] progress 22.0/1314.2 MB (1.7%) speed=0.19 MB/s elapsed=90s
+[21:35:19] progress 24.9/1314.2 MB (1.9%) speed=0.19 MB/s elapsed=105s

@@ -1,6 +1,6 @@
 # 消融A：关闭 mosaic 增强（唯一变量），用于过拟合对照
 name: ablation_no_mosaic
-model: yolov8n.pt
+model: weights/yolov8n.pt
 data: data/yolo/data.yaml
 epochs: 50
 imgsz: 640

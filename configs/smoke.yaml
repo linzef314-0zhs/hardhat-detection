@@ -1,6 +1,6 @@
 # 冒烟测试：200 张 × 10 epoch，验证全链路
 name: smoke
-model: yolov8n.pt
+model: weights/yolov8n.pt
 data: data/yolo/data.yaml
 epochs: 10
 imgsz: 640

@@ -1,6 +1,6 @@
 # 基线配置：YOLOv8n 标准配方
 name: base
-model: yolov8n.pt
+model: weights/yolov8n.pt
 data: data/yolo/data.yaml
 epochs: 50
 imgsz: 640

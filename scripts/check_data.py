@@ -46,7 +46,6 @@ def main():
                 xc, yc, bw, bh = map(float, parts[1:5])
                 cls_counter[cid] += 1
                 all_areas.append(bw * bh)
-                split_counts and all_counts.append(0)
                 # 越界检测（归一化坐标应全在 [0,1]）
                 if not (0 <= xc <= 1 and 0 <= yc <= 1 and 0 < bw <= 1 and 0 < bh <= 1):
                     oob += 1

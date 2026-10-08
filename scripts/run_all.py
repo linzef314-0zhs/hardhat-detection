@@ -46,6 +46,9 @@ def main():
             log(f"=== 完成 {cfg}，耗时 {(time.time()-t0)/60:.1f} min ===")
         log(f"=== 分析 {run_dir} ===")
         sh([py, "scripts/analyze.py", "--run", run_dir])
+        if cfg.endswith("base.yaml"):
+            log("=== 生成 bad case 叠加图 ===")
+            sh([py, "scripts/gen_badcases.py", "--run", run_dir])
     log("ALL DONE — 全部实验与分析完成")
 
 
