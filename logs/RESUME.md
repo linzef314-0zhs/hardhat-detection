@@ -32,13 +32,15 @@ YOLOv8n 全流程投名状项目。**截止：今天 2026-10-09 24:00**。
 - git 12 次提交
 
 ## 项目已交付（2026-10-09 17:30 收工）
-
 - README 全文定稿：12 张配图（docs/images/）、5 条失效模式（用户人工读图）、
   第 7 节详记 2/7/1 + 略记 4 条、base_long100 推翻欠拟合假设
 - 新增 00-导读.md（项目说明书/文件夹地图）+ docs/git_history.txt（git 历史导出）
 - 桌面交付两份：C:\Users\什亭之匣\Desktop\hardhat-detection（完整版 3.9G，无 .git）、
   hardhat-detection-评审版（59MB 轻量发送版，含评审版说明.md）
-- git 22 次提交，工作区干净
+- git 25 次提交，工作区干净。**18:20 用 git-filter-repo 清洗了历史**（init 曾误提交 1.3G 数据集，
+  .git 从 2.5G 瘦到 2.1M；commit hash 全部变了，docs/git_history.txt 已重新导出）
+- GitHub 上传进行中：等用户在网页建空仓库 hardhat-detection（public），之后 git push
+  （首次 push 会弹 GCM 浏览器授权，一点即可）
 - 遗留可选：用户若改第 7 节口吻，直接在 README 编辑后补一次 commit 即可
 
 ## 15:08~16:55 进展（base_long100 已完成）
