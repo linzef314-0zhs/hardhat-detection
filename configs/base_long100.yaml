@@ -1,0 +1,22 @@
+# 加长训练：验证"50 epoch 欠拟合受限"判定
+# 与 base 唯一差异：epochs 50→100（patience=10 早停兜底，若过拟合会自动止损）
+name: base_long100
+model: weights/yolov8n.pt
+data: data/yolo/data.yaml
+epochs: 100
+imgsz: 640
+batch: 16
+workers: 0
+patience: 10
+seed: 42
+optimizer: auto
+lr0: 0.01
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 3
+weight_decay: 0.0005
+mosaic: 1.0
+mixup: 0.0
+close_mosaic: 10
+amp: true
+plots: true
