@@ -1,0 +1,4 @@
+[09:33:54] 等待消融B完成...
+[09:33:54] 消融B已就绪，启动 imgsz960 消融
+[09:33:54] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/ablation_imgsz960.yaml
+[09:33:54] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/ablation_imgsz960.yaml

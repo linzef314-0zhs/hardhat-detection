@@ -39,6 +39,7 @@ def run_once(cfg, batch):
         batch=batch, workers=cfg.get("workers", 8),
         patience=cfg.get("patience", 10), seed=cfg.get("seed", 42),
         optimizer=cfg.get("optimizer", "auto"),
+        momentum=cfg.get("momentum") if cfg.get("momentum") else 0.937,
         lr0=cfg["lr0"], lrf=cfg.get("lrf", 0.01),
         cos_lr=cfg.get("cos_lr", True),
         warmup_epochs=cfg.get("warmup_epochs", 3),

@@ -1,0 +1,24 @@
+# 消融B：学习率减半（唯一变量），用于学习率诊断对照
+# 注意：base 实际由 optimizer=auto 选定为 AdamW(lr=0.001429, beta1=0.9)，
+# 因此本组显式固定同一优化器，仅将 lr0 减半，保持单变量对照。
+name: ablation_lr_half
+model: weights/yolov8n.pt
+data: data/yolo/data.yaml
+epochs: 50
+imgsz: 640
+batch: 16
+workers: 0
+patience: 10
+seed: 42
+optimizer: AdamW
+lr0: 0.000714
+momentum: 0.9
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 3
+weight_decay: 0.0005
+mosaic: 1.0
+mixup: 0.0
+close_mosaic: 10
+amp: true
+plots: true

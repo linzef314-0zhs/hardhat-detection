@@ -33,6 +33,10 @@
    - 现象：ablation_lr5e3 与 base 的结果逐位相同（best_epoch、mAP 四位小数全同）
    - 排查：同 seed + 结果完全相同 → 怀疑配置未生效 → 翻日志发现 auto 模式提示
      "ignoring lr0 and determining best optimizer automatically"
-   - 根因：Ultralytics 的 optimizer=auto 会忽略用户传入的 lr0/momentum 自行决定
-   - 修复：显式 optimizer: SGD 后重跑；无效行在 results.tsv 中标记 INVALID 保留审计痕迹
+   - 根因：Ultralytics 的 optimizer=auto 会忽略用户传入的 lr0/momentum 自行决定；
+     且 auto 对本项目实际选择的是 AdamW(lr=0.001429) 而非文档直觉上的 SGD
+   - 二次纠错：第一次修复误用显式 SGD+lr0=0.005，引入"换优化器"第二变量；
+     最终改为显式 AdamW + lr0=0.000714（恰为 auto 值的一半），保持单变量对照
+   - 修复后重跑；无效行在 results.tsv 中标记 INVALID 保留审计痕迹
    - 教训：框架的"智能默认"会静默覆盖用户意图；消融实验必须先验证"变量真的变了"
+     （本轮通过 epoch1 的 lr 日志值 0.000714/3≈0.000237 确认 warmup 起点正确）

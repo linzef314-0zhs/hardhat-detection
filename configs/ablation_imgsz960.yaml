@@ -1,0 +1,23 @@
+# 消融C：输入分辨率 640→960（唯一变量），验证小目标瓶颈
+# base 实际为 AdamW(lr=0.001429, beta1=0.9)，显式对齐保持单变量
+name: ablation_imgsz960
+model: weights/yolov8n.pt
+data: data/yolo/data.yaml
+epochs: 50
+imgsz: 960
+batch: 8
+workers: 0
+patience: 10
+seed: 42
+optimizer: AdamW
+lr0: 0.001429
+momentum: 0.9
+lrf: 0.01
+cos_lr: true
+warmup_epochs: 3
+weight_decay: 0.0005
+mosaic: 1.0
+mixup: 0.0
+close_mosaic: 10
+amp: true
+plots: true
