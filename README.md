@@ -19,7 +19,8 @@
    - A. 关闭 mosaic 增强 → mosaic 是不是在起正则作用？
    - B. lr0 减半（0.001429→0.000714，显式 AdamW 保持单变量）→ 学习率敏感性？
    - C. 输入分辨率 640→960 → person 崩是不是因为小目标看不清？
-4. 测试集终评（500 张，全程未参与调参）+ 人工错误分析 + CNN 特征图可视化。
+4. 测试集终评（500 张，全程未参与调参）+ 人工错误分析 + CNN 特征图可视化
+   + 100 epoch 加长验证跑（检验"欠拟合"猜测，结论：被推翻，见第 4 节）。
 
 ## 3. 结果总表
 
@@ -31,6 +32,7 @@
 | ablation_no_mosaic | mosaic=0 | 49 | 0.6427 | 0.4211 | 0.089 | mAP 微降 + gap 拉大 → mosaic 起正则作用 |
 | ablation_lr_half | lr0 减半 | 47 | 0.6449 | 0.4244 | 0.102 | mAP 几乎不变 → lr ±50% 稳健 |
 | ablation_imgsz960 | 640→960 | 50 | 0.6439 | 0.4244 | 0.035 | 无收益且跑满 50 未收敛；person 仍崩 → 瓶颈在标注不在分辨率 |
+| base_long100 | epochs 50→100 | 56 | 0.6461 | 0.4248 | 0.043 | 第 66 轮早停；成绩≈base → 50 epoch 已收敛，推翻"欠拟合"猜测（见第 4 节） |
 | ~~ablation_lr5e3~~ | lr0=5e-3 | — | — | — | — | INVALID：optimizer=auto 静默忽略 lr0，结果与 base 逐位相同（失败记录 7） |
 
 测试集终评（base best.pt，500 张，全程未参与调参）：
@@ -48,7 +50,7 @@
 
 （证据：`runs/analysis/<name>/loss_curves.png` + `train_vs_val_map.png` + `conclusion.txt`）
 
-判定：**base 在 50 epoch 内无明显过拟合，主要受收敛程度限制**。
+判定：**base 在 50 epoch 内无明显过拟合，且已收敛**（非欠拟合——经 100 epoch 加长实验推翻，见下）。
 
 证据（base）：
 
@@ -64,8 +66,17 @@
 - lr_half 的 gap=0.102 轻微越线，但 val mAP 未掉、val loss 无拐点 →
   解读为"拟合差异加大"而非病态过拟合（train mAP 涨、val 没受损）。
 
-对策排序（本轮未执行，写入第 8 节）：① 延长到 100 epoch 验证欠拟合判定；
-② 若届时真出现过拟合，再加 weight_decay 或更强增强。
+100 epoch 加长验证（假设被推翻的记录）：
+
+- 假设：base best_epoch=47/50 贴近边界，疑似"没训够"（欠拟合受限）；
+- 实验：同配置仅 epochs 50→100，patience=10 早停兜底；
+- 结果：第 56 轮达峰后连续 10 轮无新高，第 66 轮触发早停；mAP50=0.6461
+  （base 0.6480）、mAP50-95=0.4248 持平，train/val gap 反而缩小到 0.043；
+- 结论：**50 epoch 已收敛，训练时长不是瓶颈**。诚实记录一点：cosine 按 100 轮
+  排程，早停时 lr 尚在 4e-4 未走完全部衰减，理论上完整收尾或能再挤一点；
+  但 10 轮平台期 + gap 缩小已足以说明收益上限。
+- 修订后的对策：剩余提升空间在数据侧（person 标注质量、copy-paste 增强、
+  网抓杂质清洗）与模型容量，不在训练时长。
 
 ## 5. 学习率诊断
 
@@ -93,7 +104,12 @@
 
 失效模式（逐张翻看后人工归纳，每条"我认为是 X，因为 Y"）：
 
-> （待补：本人翻 badcases/ 文件夹后的手写结论，3~5 条）
+1. **部分 FP/FN 来自数据集中的镜像特效图（网抓杂质）。** 因为：数据集系网络抓取，
+   部分原图自带镜像/万花筒滤镜（如 `FN1_hard_hat_workers2125`，右下角水印本身
+   就是镜像的，已对照原始 zip 包确认非我方 pipeline 所致）；标注员把倒影也标成了
+   真目标，而倒影是倒置的、训练分布外的形态，模型在倒影区域的预测自然与标注对不上。
+
+> （待补：其余 2~4 条，本人翻 badcases/ 文件夹后补充）
 
 ## 7. 失败记录
 
@@ -164,13 +180,15 @@
 - 未做 OOD（跨域）独立测试集评估
 - 未做 ONNX 导出与部署一致性校验（接口已预留）
 - 消融完成 3 组（mosaic / lr / imgsz），weight_decay 维度未覆盖
-- 未做 100 epoch 加长训练，"欠拟合受限"的判定基于 50 epoch 内证据外推
+- 100 epoch 加长实验已做（早停于第 66 轮），但 cosine 衰减未走完全程，
+  "零收益"结论存在理论上的小尾巴（详见第 4 节）
 - 错误分析样本量 60 张（conf=0.25，原计划 100 张）
 
 ### 下一步计划
 
 - ONNX 导出 + OpenVINO INT8 量化，部署到处理器 NPU 做实时推理（让闲置的 NPU 上岗）
-- 追加 weight_decay 消融与 100 epoch 加长训练：补全消融矩阵、坐实欠拟合判定
+- 追加 weight_decay 消融，补全消融矩阵
+- 数据侧改进（第 4 节修订对策）：清洗网抓镜像杂质图、copy-paste 增强、修 person 标注
 - 自采 300~500 张本地工地/俯拍图像做完全独立的 OOD 测试集
 
 ## 9. 复现
@@ -186,6 +204,7 @@ python scripts/train.py --config configs/base.yaml
 python scripts/train.py --config configs/ablation_no_mosaic.yaml
 python scripts/train.py --config configs/ablation_lr_half.yaml
 python scripts/train.py --config configs/ablation_imgsz960.yaml
+python scripts/train.py --config configs/base_long100.yaml    # 100 epoch 加长验证
 
 # 诊断 / 错误分析 / 演示
 python scripts/analyze.py --run runs/detect/base        # 每组实验各跑一次
