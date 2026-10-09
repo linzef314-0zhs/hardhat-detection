@@ -8,6 +8,9 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
+# 中文字体保险：即使图注含中文也不乱码
+matplotlib.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DengXian"]
+matplotlib.rcParams["axes.unicode_minus"] = False
 import matplotlib.pyplot as plt
 
 CLASSES = ["helmet", "head", "person"]

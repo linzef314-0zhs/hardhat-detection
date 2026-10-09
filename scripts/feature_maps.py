@@ -8,6 +8,9 @@ from pathlib import Path
 
 import matplotlib
 matplotlib.use("Agg")
+# 中文字体：防止标题乱码（方框）；负号用 ASCII 连字符避免 U+2212 缺字形
+matplotlib.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DengXian"]
+matplotlib.rcParams["axes.unicode_minus"] = False
 import matplotlib.pyplot as plt
 import torch
 
