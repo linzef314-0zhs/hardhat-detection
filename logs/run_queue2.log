@@ -1,4 +1,7 @@
 [09:33:54] 等待消融B完成...
 [09:33:54] 消融B已就绪，启动 imgsz960 消融
 [09:33:54] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/ablation_imgsz960.yaml
-[09:33:54] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/train.py --config configs/ablation_imgsz960.yaml
+[12:12:56] RUN C:\Users\什亭之匣\.conda\envs\torch314\python.exe scripts/analyze.py --run runs/detect/ablation_imgsz960
+[12:14:56] QUEUE2 DONE — imgsz960 消融与分析完成
+\python.exe scripts/analyze.py --run runs/detect/ablation_imgsz960
+[12:14:56] QUEUE2 DONE — imgsz960 消融与分析完成
