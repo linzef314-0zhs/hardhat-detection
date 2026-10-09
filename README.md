@@ -1,6 +1,6 @@
 # Hard Hat Detection — YOLOv8 目标检测全流程项目
 
-> 状态：进行中。本 README 随实验推进补全，最终版本以提交日为准。
+> 状态：收尾中。第 6 节失效模式与第 7 节失败记录由本人手写后定稿。
 
 ## 1. 任务与难点
 
@@ -9,37 +9,91 @@
 - 难点：① 目标小（工人通常占画面很小比例）；② 类别不均衡（helmet 实例远多于 head）；
   ③ `person` 类存在已知标注不全问题（社区多处提及）；④ helmet 与 head 语义相邻，天然混淆对。
 
-## 2. 我做了什么（三步）
+## 2. 我做了什么（四步）
 
 1. 数据工程：VOC XML → YOLO 格式转换（固定类别映射 helmet=0/head=1/person=2）、
    seed=42 固定 80/10/10 划分、五项数据体检 + 50 张标注叠加人工抽检。
-2. 基线对齐：YOLOv8n @640px，50 epoch，cos_lr，lr0=0.01→1e-4。
-3. 控制变量消融（2 组，每次只变一个变量）：
-   - A. 关闭 mosaic 增强（验证增强对过拟合的影响）
-   - B. lr0 减半至 5e-3（学习率敏感性）
+2. 基线对齐：YOLOv8n @640px，50 epoch，cos 学习率衰减，
+   optimizer=auto（实际选中 AdamW，lr 峰值 1.43e-3 → 末轮 1.57e-5）。
+3. 控制变量消融（3 组，每次只变一个变量，每组先写明"要回答什么问题"）：
+   - A. 关闭 mosaic 增强 → mosaic 是不是在起正则作用？
+   - B. lr0 减半（0.001429→0.000714，显式 AdamW 保持单变量）→ 学习率敏感性？
+   - C. 输入分辨率 640→960 → person 崩是不是因为小目标看不清？
+4. 测试集终评（500 张，全程未参与调参）+ 人工错误分析 + CNN 特征图可视化。
 
 ## 3. 结果总表
 
-| 实验 | 改动 | best_epoch | mAP50 | mAP50-95 | 备注 |
-|---|---|---|---|---|---|
-| base | — | 待填 | 待填 | 待填 | |
-| ablation_no_mosaic | mosaic=0 | 待填 | 待填 | 待填 | |
-| ablation_lr5e3 | lr0=5e-3 | 待填 | 待填 | 待填 | |
+验证集（500 张，固定 seed=42 划分）结果，全部跑满 50 epoch：
+
+| 实验 | 改动 | best_epoch | mAP50 | mAP50-95 | train/val gap | 备注 |
+|---|---|---|---|---|---|---|
+| base | — | 47 | 0.6480 | 0.4248 | 0.063 | |
+| ablation_no_mosaic | mosaic=0 | 49 | 0.6427 | 0.4211 | 0.089 | mAP 微降 + gap 拉大 → mosaic 起正则作用 |
+| ablation_lr_half | lr0 减半 | 47 | 0.6449 | 0.4244 | 0.102 | mAP 几乎不变 → lr ±50% 稳健 |
+| ablation_imgsz960 | 640→960 | 50 | 0.6439 | 0.4244 | 0.035 | 无收益且跑满 50 未收敛；person 仍崩 → 瓶颈在标注不在分辨率 |
+| ~~ablation_lr5e3~~ | lr0=5e-3 | — | — | — | — | INVALID：optimizer=auto 静默忽略 lr0，结果与 base 逐位相同（失败记录 7） |
+
+测试集终评（base best.pt，500 张，全程未参与调参）：
+
+| mAP50 | mAP50-95 | Precision | Recall | helmet AP50 | head AP50 | person AP50 |
+|---|---|---|---|---|---|---|
+| 0.6233 | 0.4203 | 0.952 | 0.580 | 0.951 | 0.898 | 0.021 |
+
+- val mAP50=0.6475 vs test 0.6233，差距 0.024：无划分泄漏，验证集结论可迁移到测试集。
+- P=0.95 / R=0.58：模型风格保守——宁可漏检也不错检，瓶颈在召回。
+- person AP50=0.021：该类实例少且标注不全（社区已知问题），这个数值反映的是
+  标注质量问题，不代表模型对"人"的真实检测能力。
 
 ## 4. 过拟合诊断
 
 （证据：`runs/analysis/<name>/loss_curves.png` + `train_vs_val_map.png` + `conclusion.txt`）
-待填：判定 + 证据 + 对策。
+
+判定：**base 在 50 epoch 内无明显过拟合，主要受收敛程度限制**。
+
+证据（base）：
+
+1. val loss 全程未出现持续回升的拐点，mAP 平台期出现在 47 轮附近；
+2. best.pt 上 train mAP50=0.7108 / val mAP50=0.6475，差距 0.063 < 0.10 经验阈值；
+3. 检测任务训练集带增强，val loss 低于 train loss 属正常——判过拟合看走势分化，
+   不看绝对高低。
+
+消融交叉验证：
+
+- 关掉 mosaic 后 gap 从 0.063 拉大到 0.089 且 mAP 微降 → mosaic 确实在起正则作用，
+  但 gap 仍未越线，说明 base 的正则水平"够用但不富余"；
+- lr_half 的 gap=0.102 轻微越线，但 val mAP 未掉、val loss 无拐点 →
+  解读为"拟合差异加大"而非病态过拟合（train mAP 涨、val 没受损）。
+
+对策排序（本轮未执行，写入第 8 节）：① 延长到 100 epoch 验证欠拟合判定；
+② 若届时真出现过拟合，再加 weight_decay 或更强增强。
 
 ## 5. 学习率诊断
 
 （证据：`runs/analysis/<name>/lr_schedule.png`）
-待填：调度形态、两组 lr0 对比、最终选择理由。
+
+- 调度形态：warmup 3 epoch → cosine 衰减，峰值 1.42e-3 → 末轮 1.57e-5，形态正常。
+- 意外发现：optimizer=auto 实际选中 **AdamW(lr=0.001429, beta1=0.9)** 而非直觉上的 SGD，
+  且会静默忽略手动传入的 lr0/momentum——消融 B 因此返工一次（失败记录第 7 条）。
+- 对比：lr0 减半后 mAP50 仅 -0.0031、mAP50-95 仅 -0.0004 → 在 50 epoch 预算下，
+  学习率 ±50% 不敏感，不是当前瓶颈。
+- 最终选择：沿用 auto（AdamW, lr=0.001429）。理由：50 epoch 内收敛形态健康，
+  且消融证明结果对其取值稳健。
 
 ## 6. 错误分析（人工）
 
-固定 conf 阈值，分 FP / FN / 错分类 / 定位误差 四类人工看图归类。
-待填：3~5 个失效模式，每模式配一张图 + 一句"我认为是 X，因为 Y"。
+方法：base best.pt，conf=0.25，在验证集抽 60 张问题样本，
+按 FP / FN / 错分类 / 定位误差 四类人工看图归类
+（图片在 `runs/analysis/base/badcases/`，已按类别分文件夹）。
+
+量化分布：**FP=63，FN=40，CLS=4，LOC=2**。
+
+- FP 最多（约为 FN 的 1.6 倍）：与测试集 P=0.95 的"整体保守"并不矛盾——
+  badcase 抽样专挑有错的图，0.95 是全集口径；两个口径并存说明错误集中在少数困难样本上。
+- CLS/LOC 极少：helmet↔head 语义相邻的担心没有兑现成大面积错分类。
+
+失效模式（逐张翻看后人工归纳，每条"我认为是 X，因为 Y"）：
+
+> （待补：本人翻 badcases/ 文件夹后的手写结论，3~5 条）
 
 ## 7. 失败记录
 
@@ -109,13 +163,14 @@
 
 - 未做 OOD（跨域）独立测试集评估
 - 未做 ONNX 导出与部署一致性校验（接口已预留）
-- 消融仅 2 组（原计划 4 组），未覆盖 imgsz 与 weight_decay 维度
-- 错误分析样本量 50 张（原计划 100 张）
+- 消融完成 3 组（mosaic / lr / imgsz），weight_decay 维度未覆盖
+- 未做 100 epoch 加长训练，"欠拟合受限"的判定基于 50 epoch 内证据外推
+- 错误分析样本量 60 张（conf=0.25，原计划 100 张）
 
 ### 下一步计划
 
 - ONNX 导出 + OpenVINO INT8 量化，部署到处理器 NPU 做实时推理（让闲置的 NPU 上岗）
-- 追加 imgsz 960 与 weight_decay 两组消融，补全消融矩阵
+- 追加 weight_decay 消融与 100 epoch 加长训练：补全消融矩阵、坐实欠拟合判定
 - 自采 300~500 张本地工地/俯拍图像做完全独立的 OOD 测试集
 
 ## 9. 复现
@@ -125,8 +180,18 @@
 python scripts/convert_voc_to_yolo.py --raw data/raw --out data/yolo
 python scripts/check_data.py
 python scripts/visualize_annotations.py --n 50
+
+# 训练（Windows 后台运行需 workers=0）
 python scripts/train.py --config configs/base.yaml
-python scripts/analyze.py --run runs/detect/base
+python scripts/train.py --config configs/ablation_no_mosaic.yaml
+python scripts/train.py --config configs/ablation_lr_half.yaml
+python scripts/train.py --config configs/ablation_imgsz960.yaml
+
+# 诊断 / 错误分析 / 演示
+python scripts/analyze.py --run runs/detect/base        # 每组实验各跑一次
+python scripts/gen_badcases.py --run runs/detect/base    # 生成 badcases/ 分类图
+python scripts/demo_predict.py                           # 测试集评估 + 预测叠加图
+python scripts/feature_maps.py --img <图片路径>          # CNN 各层特征图可视化
 ```
 
 环境版本与种子：seed=42，requirements.txt 锁定。
