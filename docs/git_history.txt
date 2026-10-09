@@ -1,20 +1,24 @@
-33c2d25  10-09 17:12  logs: base_long100 训练日志与 results.tsv 记录归档
-d6b58cf  10-09 17:12  README: 全文配图12张(docs/images, 绕开runs/忽略); 第7节失败记录详记3条+略记4条
-b0864de  10-09 16:57  README: 第6节失效模式补全至5条(用户人工读图结论)
-457292e  10-09 16:46  RESUME: 16:55, long100完成推翻欠拟合; 剩失效模式2-4条+失败记录口吻
-7484904  10-09 16:45  README: base_long100 结果(66轮早停,mAP持平) → 第4节推翻欠拟合假设; 第6节加失效模式1(镜像网抓图); 第8/9节同步
-fe17998  10-09 15:10  add base_long100 (100ep, 唯一变量=epochs) + 后台启动器
-ce8d03c  10-09 15:06  fix: matplotlib 中文字体乱码(雅黑+unicode_minus), 重出4张特征图; analyze/check_data 加同款保险
-282a943  10-09 14:52  RESUME: 15:05 状态, README主体已定稿, 剩用户手写部分
-49eb08c  10-09 14:51  README: 填入第3-6节结果/诊断/错误分析; 更新第8节局限与第9节复现命令
-2a08dee  10-09 14:41  RESUME 更新至14:40最终状态; add demo_predict/feature_maps脚本
-b8289a5  10-09 09:45  README 7.5补全全部问答; RESUME更新至09:45状态
-17ea967  10-09 09:33  add ablation_imgsz960 + queue2 runner; fix ablation_lr_half single-variable
-7901461  10-09 01:12  catch invalid ablation_lr5e3 (auto ignored lr0); rerun with explicit SGD
-2ad15f8  10-09 01:11  README: NPU困惑澄清 + 下一步计划
-2484cf8  10-08 23:28  add RESUME.md 交接备忘录
-99b2b88  10-08 23:25  README: 学习记录重构为四层认知递进结构
-0f0b37b  10-08 23:23  README: 增加 7.5 疑问与思考（学习记录）一节
-f0ab357  10-08 22:13  smoke passed (mAP50=0.519); fix workers=0, save path, batch=16; gitignore data/runs/weights
-949f8ad  10-08 21:35  add gen_badcases + download resume fix
-0d4cc6b  10-08 21:10  init: 项目骨架 + 6脚本 + 4配置 + AGENTS.md
+3e9a7b2  10-09 17:56  README: 采纳用户润色(6/7节等) + 新增第10节后记
+5564ede  10-09 17:30  RESUME: 项目交付收尾 17:30
+ec59e58  10-09 17:28  导读措辞修正
+653482a  10-09 17:27  add 00-导读(项目说明书) + git历史导出; 收尾定稿
+fbdff6d  10-09 17:12  logs: base_long100 训练日志与 results.tsv 记录归档
+46389a6  10-09 17:12  README: 全文配图12张(docs/images, 绕开runs/忽略); 第7节失败记录详记3条+略记4条
+a0abde8  10-09 16:57  README: 第6节失效模式补全至5条(用户人工读图结论)
+1af34f1  10-09 16:46  RESUME: 16:55, long100完成推翻欠拟合; 剩失效模式2-4条+失败记录口吻
+c0cc548  10-09 16:45  README: base_long100 结果(66轮早停,mAP持平) → 第4节推翻欠拟合假设; 第6节加失效模式1(镜像网抓图); 第8/9节同步
+d72886d  10-09 15:10  add base_long100 (100ep, 唯一变量=epochs) + 后台启动器
+e60e8df  10-09 15:06  fix: matplotlib 中文字体乱码(雅黑+unicode_minus), 重出4张特征图; analyze/check_data 加同款保险
+cf87897  10-09 14:52  RESUME: 15:05 状态, README主体已定稿, 剩用户手写部分
+8efcf40  10-09 14:51  README: 填入第3-6节结果/诊断/错误分析; 更新第8节局限与第9节复现命令
+d3cd301  10-09 14:41  RESUME 更新至14:40最终状态; add demo_predict/feature_maps脚本
+2883e43  10-09 09:45  README 7.5补全全部问答; RESUME更新至09:45状态
+e6eeabb  10-09 09:33  add ablation_imgsz960 + queue2 runner; fix ablation_lr_half single-variable
+a56be2b  10-09 01:12  catch invalid ablation_lr5e3 (auto ignored lr0); rerun with explicit SGD
+01e9ae0  10-09 01:11  README: NPU困惑澄清 + 下一步计划
+2dbdb01  10-08 23:28  add RESUME.md 交接备忘录
+12e47ec  10-08 23:25  README: 学习记录重构为四层认知递进结构
+e1dc5ef  10-08 23:23  README: 增加 7.5 疑问与思考（学习记录）一节
+7021d80  10-08 22:13  smoke passed (mAP50=0.519); fix workers=0, save path, batch=16; gitignore data/runs/weights
+439ad91  10-08 21:35  add gen_badcases + download resume fix
+f18c403  10-08 21:10  init: 项目骨架 + 6脚本 + 4配置 + AGENTS.md
